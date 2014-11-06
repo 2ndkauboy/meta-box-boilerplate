@@ -14,7 +14,7 @@ So to give it a try, just copy both folders into your `wp-content/plugin` direct
 
 Just write a new PHP class which extends the `Meta_Box` base class and implements the `Meta_Box_Interface`.
 This new new class needs to have two functions: `render()` and `save()`. In the constructor of this new class, you call the constructor of the parent class.
-Here you can define the name, label, post type and, position and priority of the new meta box.
+Here you can define the name, label, post type, position and priority of the new meta box.
 
 ### Can I use this boilderplate inside of my own plugin or theme? ###
 
