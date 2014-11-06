@@ -16,7 +16,7 @@ Just write a new PHP class which extends the `Meta_Box` base class and implement
 This new new class needs to have two functions: `render()` and `save()`. In the constructor of this new class, you call the constructor of the parent class.
 Here you can define the name, label, post type and, position and priority of the new meta box.
 
-## Can I use this boilderplate inside of my own plugin or theme? ##
+### Can I use this boilderplate inside of my own plugin or theme? ###
 
 Absolutely! You don't have to use it as a "helper plugin". The only thing you have to make sure is that the PHP files with the classes can be found.
 The easiest way to achieve this is using the provided autoloader function from the `Meta_Box_Boilerplate` class.
