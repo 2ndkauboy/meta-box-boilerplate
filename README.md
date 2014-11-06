@@ -3,7 +3,7 @@
 With this boilerplate plugin, creating new meta boxes for the WordPress backend becomes very easy.
 All you have to do is creating a new class implementing the meta box base class and write a function to render and one to save the meta box.
 
-### Quickstart ###
+## Quickstart ##
 
 In the `example-plugin` folder you'll find a very simple plugin that uses the boilerplate. It uses the boilerplate plugin as a "helper plugin".
 So to give it a try, just copy both folders into your `wp-content/plugin` directory and activate both of them, first the boilderplate, than the example plugin.
