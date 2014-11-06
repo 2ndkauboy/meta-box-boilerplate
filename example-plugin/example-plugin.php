@@ -49,6 +49,12 @@ class Example_Plugin {
 		// load the translation for this plugin
 		$this->load_language( 'example-plugin' );
 
+		// if the helper class is not active, return and do not all the plugin's functions
+		if ( ! class_exists( 'meta_box_boilerplate\\Meta_Box_Boilerplate' ) ) {
+			add_action( 'admin_notices', array( $this, 'helper_plugin_inactive_admin_notice' ) );
+			return;
+		}
+
 		// register autoloader
 		spl_autoload_register( array( $this, 'autoload' ) );
 
@@ -125,6 +131,19 @@ class Example_Plugin {
 
 		// add date meta box
 		new meta_box_boilerplate\Date_Meta_Box();
+	}
+
+	/**
+	 * Show an error message if the helper plugin is not active
+	 *
+	 * @return void
+	 */
+	public function helper_plugin_inactive_admin_notice() {
+		?>
+		<div class="error">
+			<p><?php _e( 'The helper plugin "Meta Box Boilerplate" must be activated to use the plugin "Example plugin for Meta Box Boilerplate"!', 'example-plugin' ); ?></p>
+		</div>
+		<?php
 	}
 
 } // end class

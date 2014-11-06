@@ -1,7 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Example plugin for Meta Box Boilerplate\n"
-"POT-Creation-Date: 2014-11-06 13:19+0100\n"
+"POT-Creation-Date: 2014-11-06 15:40+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: Bernhard Kau <bernhard@kau-boys.de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +17,15 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 1.6.10\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../example-plugin.php:144
+msgid ""
+"The helper plugin \"Meta Box Boilerplate\" must be activated to use the "
+"plugin \"Example plugin for Meta Box Boilerplate\"!"
+msgstr ""
+"Das Hilfsplugin \"Meta Box Boilerplate\" muss aktiviert sein, um das  "
+"\"Example plugin for Meta Box Boilerplate\" nutzen zu können!"
 
 #: ../inc/class-date-meta-box.php:11
 msgid "Event dates"
