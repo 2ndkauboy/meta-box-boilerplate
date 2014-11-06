@@ -11,8 +11,6 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0
  */
 
-namespace meta_box_boilerplate;
-
 add_action(
 	'plugins_loaded',
 	array( Example_Plugin::get_instance(), 'plugin_setup' )
@@ -75,16 +73,14 @@ class Example_Plugin {
 	 * @return void
 	 */
 	public function autoload( $class ) {
-		// trim leading namespace backslash
-		$class = ltrim( $class, '\\' );
 
 		// check if class is in same namespace, if not return
-		if ( strpos( $class, __NAMESPACE__ ) !== 0 ) {
+		if ( strpos( $class, 'meta_box_boilerplate' ) !== 0 ) {
 			return;
 		}
 
 		// remove namespace from class name
-		$class = str_replace( __NAMESPACE__ . '\\', '', $class );
+		$class = str_replace( 'meta_box_boilerplate' . '\\', '', $class );
 
 		// make the class name lowercase and replace underscores with dashes
 		$class = strtolower( str_replace( '_', '-', $class ) );
@@ -128,7 +124,7 @@ class Example_Plugin {
 	public function init_meta_boxes() {
 
 		// add date meta box
-		new Date_Meta_Box();
+		new meta_box_boilerplate\Date_Meta_Box();
 	}
 
 } // end class
