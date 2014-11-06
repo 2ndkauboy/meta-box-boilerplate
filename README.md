@@ -6,7 +6,7 @@ All you have to do is creating a new class implementing the meta box base class 
 ### Quickstart ###
 
 In the `example-plugin` folder you'll find a very simple plugin that uses the boilerplate. It uses the boilerplate plugin as a "helper plugin".
-So to give it a try, just copy both folders into your `wp-content/plugin` directory and activate both of them.
+So to give it a try, just copy both folders into your `wp-content/plugin` directory and activate both of them, first the boilderplate, than the example plugin.
  
 ## Frequently Asked Questions ##
 
