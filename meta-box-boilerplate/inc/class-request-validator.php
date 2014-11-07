@@ -19,7 +19,7 @@ class Request_Validator implements Request_Validator_Interface {
 	 *
 	 * @param string $cap The capability needed to do this request
 	 */
-	public function __construct( $cap ) {
+	public function __construct( $cap = 'edit_posts' ) {
 
 		$this->cap = $cap;
 	}
