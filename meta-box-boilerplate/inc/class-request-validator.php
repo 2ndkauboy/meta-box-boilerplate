@@ -8,6 +8,23 @@ namespace meta_box_boilerplate;
 class Request_Validator implements Request_Validator_Interface {
 
 	/**
+	 * The necessary capability.
+	 *
+	 * @param string
+	 */
+	private $cap;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param string $cap The capability needed to do this request
+	 */
+	public function __construct( $cap ) {
+
+		$this->cap = $cap;
+	}
+
+	/**
 	 * Verify request.
 	 *
 	 * @return bool
@@ -19,7 +36,7 @@ class Request_Validator implements Request_Validator_Interface {
 		}
 
 		// Check the user's permissions.
-		if ( ! current_user_can( 'edit_post' ) ) {
+		if ( ! empty( $this->cap ) && ! current_user_can( $this->cap ) ) {
 			return false;
 		}
 

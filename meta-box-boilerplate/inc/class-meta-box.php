@@ -57,7 +57,7 @@ class Meta_Box {
 		$this->priority  = $priority;
 
 		$this->nonce_validator   = new Nonce_Validator( $this->key . '_name', $this->key . '_action' );
-		$this->request_validator = new Request_Validator();
+		$this->request_validator = new Request_Validator( 'edit_' . $this->post_type . 's' );
 
 		add_action( 'save_post', array( $this, 'save' ) );
 		add_action( 'add_meta_boxes', array( $this, 'register' ) );
