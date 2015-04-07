@@ -56,6 +56,6 @@ class Nonce_Validator implements Nonce_Validator_Interface {
 	 * @return bool
 	 */
 	public function is_valid() {
-		return wp_verify_nonce( $_REQUEST[ $this->name ], $this->action );
+		return isset( $_REQUEST[ $this->name ] ) && wp_verify_nonce( $_REQUEST[ $this->name ], $this->action );
 	}
 }
