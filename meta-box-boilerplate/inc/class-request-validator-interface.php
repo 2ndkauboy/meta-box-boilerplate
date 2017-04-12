@@ -1,10 +1,19 @@
 <?php
 /**
+ * Request_Validator_Interface
+ *
  * Validate a request
+ *
+ * @package IMBJobOffer
  */
 
-namespace meta_box_boilerplate;
+namespace imb;
 
+/**
+ * Interface Request_Validator_Interface
+ *
+ * @package IMBJobOffer
+ */
 interface Request_Validator_Interface {
 
 	/**

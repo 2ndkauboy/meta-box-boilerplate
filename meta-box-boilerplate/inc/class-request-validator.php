@@ -1,23 +1,32 @@
 <?php
 /**
+ * Request_Validator
+ *
  * A very simple implementation to provide a request validation.
+ *
+ * @package IMBJobOffer
  */
 
-namespace meta_box_boilerplate;
+namespace imb;
 
+/**
+ * Class Request_Validator
+ *
+ * @package IMBJobOffer
+ */
 class Request_Validator implements Request_Validator_Interface {
 
 	/**
-	 * The necessary capability.
+	 * The necessary capability
 	 *
-	 * @param string
+	 * @var string
 	 */
 	private $cap;
 
 	/**
-	 * Constructor.
+	 * Constructor
 	 *
-	 * @param string $cap The capability needed to do this request
+	 * @param string $cap The capability needed to do this request.
 	 */
 	public function __construct( $cap = 'edit_posts' ) {
 
@@ -40,7 +49,7 @@ class Request_Validator implements Request_Validator_Interface {
 			return false;
 		}
 
-		// everything OK, the request can be saved
+		// Everything OK, the request can be saved.
 		return true;
 	}
 }

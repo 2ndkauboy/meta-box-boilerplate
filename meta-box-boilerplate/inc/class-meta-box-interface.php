@@ -1,7 +1,17 @@
 <?php
+/**
+ * Meta_Box_Interface
+ *
+ * @package IMBJobOffer
+ */
 
-namespace meta_box_boilerplate;
+namespace imb;
 
+/**
+ * Interface Meta_Box_Interface
+ *
+ * @package IMBJobOffer
+ */
 interface Meta_Box_Interface {
 
 	/**
@@ -12,14 +22,14 @@ interface Meta_Box_Interface {
 	/**
 	 * Render the meta box
 	 *
-	 * @param \WP_Post $post The post object
+	 * @param \WP_Post $post The post object.
 	 */
 	public function render( $post );
 
 	/**
 	 * Save the meta box data
 	 *
-	 * @param int $post_id The post ID
+	 * @param int $post_id The post ID.
 	 */
 	public function save( $post_id );
 

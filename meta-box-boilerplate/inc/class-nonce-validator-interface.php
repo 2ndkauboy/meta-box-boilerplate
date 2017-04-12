@@ -1,10 +1,19 @@
 <?php
 /**
+ * Nonce_Validator_Interface
+ *
  * Provide nonces, and handle their validation.
+ *
+ * @package IMBJobOffer
  */
 
-namespace meta_box_boilerplate;
+namespace imb;
 
+/**
+ * Interface Nonce_Validator_Interface
+ *
+ * @package IMBJobOffer
+ */
 interface Nonce_Validator_Interface {
 
 	/**

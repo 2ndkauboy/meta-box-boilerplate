@@ -1,6 +1,12 @@
 <?php
-
-/*
+/**
+ * Meta Box Boilerplate
+ *
+ * @package     MetaBoxBoilerplate
+ * @author      Bernhard Kau
+ * @license     GPLv3
+ *
+ * @wordpress-plugin
  * Plugin Name: Meta Box Boilerplate
  * Plugin URI: https://github.com/2ndkauboy/meta-box-boilerplate/meta-box-boilerplate
  * Description: A boilerplate to easily define and add new meta boxes
@@ -13,23 +19,29 @@
 
 namespace meta_box_boilerplate;
 
-add_action(
-	'plugins_loaded',
-	array( Meta_Box_Boilerplate::get_instance(), 'plugin_setup' )
-);
+// Activation and deactivation hooks.
+register_activation_hook( __FILE__, array( Meta_Box_Boilerplate::get_instance(), 'activate' ) );
+register_deactivation_hook( __FILE__, array( Meta_Box_Boilerplate::get_instance(), 'deactivate' ) );
+// Plugin initialization.
+add_action( 'plugins_loaded', array( Meta_Box_Boilerplate::get_instance(), 'plugin_setup' ) );
 
+/**
+ * Class Meta_Box_Boilerplate
+ *
+ * @package meta_box_boilerplate
+ */
 class Meta_Box_Boilerplate {
 
 	/**
 	 * Plugin instance.
 	 *
-	 * @see   get_instance()
-	 * @type  object
+	 * @see  get_instance()
+	 * @var object
 	 */
 	protected static $instance = null;
 
 	/**
-	 * Access this plugin’s working instance
+	 * Access this plugin’s working instance.
 	 *
 	 * @wp-hook plugins_loaded
 	 * @return  object of this class
@@ -44,11 +56,11 @@ class Meta_Box_Boilerplate {
 	/**
 	 * Used for regular plugin work.
 	 *
-	 * @wp-hook  plugins_loaded
-	 * @return   void
+	 * @wp-hook plugins_loaded
+	 * @return  void
 	 */
 	public function plugin_setup() {
-		// register autoloader
+		// Register autoloader.
 		spl_autoload_register( array( $this, 'autoload' ) );
 	}
 
@@ -62,34 +74,49 @@ class Meta_Box_Boilerplate {
 	}
 
 	/**
-	 * The autoloader for this plugin
+	 * The autoloader for this plugin.
 	 *
-	 * @param string $class The class name to autoload
+	 * @param string $class The class name to autoload.
 	 *
 	 * @return void
 	 */
 	public function autoload( $class ) {
-		// trim leading namespace backslash
+		// Trim leading namespace backslash.
 		$class = ltrim( $class, '\\' );
 
-		// check if class is in same namespace, if not return
+		// Check if class is in same namespace, if not return.
 		if ( strpos( $class, __NAMESPACE__ ) !== 0 ) {
 			return;
 		}
 
-		// remove namespace from class name
+		// Remove namespace from class name.
 		$class = str_replace( __NAMESPACE__ . '\\', '', $class );
 
-		// make the class name lowercase and replace underscores with dashes
+		// Make the class name lowercase and replace underscores with dashes.
 		$class = strtolower( str_replace( '_', '-', $class ) );
 
-		// build path to class file
+		// Build path to class file.
 		$path = __DIR__ . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class-' . $class . '.php';
 
-		// include file if it exists
+		// Include file if it exists.
 		if ( file_exists( $path ) ) {
 			include( $path );
 		}
 	}
 
-} // end class
+	/**
+	 * Callback function for the plugin activation.
+	 */
+	public static function activate() {
+		flush_rewrite_rules();
+	}
+
+
+	/**
+	 * Callback function for the plugin deactivation.
+	 */
+	public static function deactivate() {
+		flush_rewrite_rules();
+	}
+
+} // End class.

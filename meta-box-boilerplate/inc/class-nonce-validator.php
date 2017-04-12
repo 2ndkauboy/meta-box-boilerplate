@@ -1,30 +1,39 @@
 <?php
 /**
- * Implementation to validate a nonce
+ * Nonce_Validator
+ *
+ * @package IMBJobOffer
  */
 
-namespace meta_box_boilerplate;
+namespace imb;
 
+/**
+ * Class Nonce_Validator
+ *
+ * Implementation to validate a nonce
+ *
+ * @package IMBJobOffer
+ */
 class Nonce_Validator implements Nonce_Validator_Interface {
 
 	/**
 	 * The nonce name.
 	 *
-	 * @param string
+	 * @var string
 	 */
 	private $name;
 
 	/**
 	 * The nonce action.
 	 *
-	 * @param string
+	 * @var string
 	 */
 	private $action;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param string $key Key for the nonce
+	 * @param string $key Key for the nonce.
 	 */
 	public function __construct( $key ) {
 
@@ -56,6 +65,6 @@ class Nonce_Validator implements Nonce_Validator_Interface {
 	 * @return bool
 	 */
 	public function is_valid() {
-		return isset( $_REQUEST[ $this->name ] ) && wp_verify_nonce( $_REQUEST[ $this->name ], $this->action );
+		return isset( $_REQUEST[ $this->name ] ) && wp_verify_nonce( sanitize_key( $_REQUEST[ $this->name ] ), $this->action ); // WPCS: input var OK.
 	}
 }
